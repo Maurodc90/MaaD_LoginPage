@@ -1,13 +1,14 @@
 package com.example.loginpage;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,11 +28,21 @@ public class MainActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(username.getText().toString().equals("admin") && password.getText().toString().equals("admin")){
-                    Toast.makeText(MainActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, admin_login.class);
-                    startActivity(intent);
-                }else{Toast.makeText(MainActivity.this, "Wrong Email/Password", Toast.LENGTH_SHORT).show();}
+                String emailtotext = username.getText().toString();
+                if (Patterns.EMAIL_ADDRESS.matcher(emailtotext).matches()){
+                    if(username.getText().toString().equals("ad@min.com") && password.getText().toString().equals("admin")){
+                        Toast.makeText(MainActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, admin_login.class);
+                        startActivity(intent);
+                    } else if (username.getText().toString().equals("us@er.com") && password.getText().toString().equals("user")){
+                        Intent intent = new Intent(MainActivity.this, menuApp.class);
+                        startActivity(intent);
+                    }
+
+                    else {
+                        Toast.makeText(MainActivity.this, "Wrong Email/Password", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 

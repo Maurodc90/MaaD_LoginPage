@@ -1,7 +1,7 @@
 package com.example.loginpage;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatActivity;
+
 import android.util.Patterns;
 
 import android.content.Intent;
@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,7 +25,8 @@ public class RegisterUser extends AppCompatActivity {
         setContentView(R.layout.activity_register_user);
 
 
-        TextView new_username = findViewById(R.id.inputUsername);
+        TextView new_username = findViewById(R.id.inputName);
+        TextView new_surname = findViewById(R.id.inputSurname);
         TextView new_mail = findViewById(R.id.inputEmail);
         TextView new_pass = findViewById(R.id.inputPassword);
         TextView conf_pass = findViewById(R.id.inputConfirmPassword);
@@ -40,7 +40,7 @@ public class RegisterUser extends AppCompatActivity {
             public void onClick(View view) {
                 String emailtotext = new_mail.getText().toString();
                 // The user registers on the site, a message is displayed, user is redirect on the login page
-                if(!TextUtils.isEmpty(new_username.getText().toString())  && !TextUtils.isEmpty(new_mail.getText().toString()) && !TextUtils.isEmpty(new_pass.getText().toString())&& !TextUtils.isEmpty(conf_pass.getText().toString())){ // if all the text are full
+                if(!TextUtils.isEmpty(new_username.getText().toString())  && !TextUtils.isEmpty(new_surname.getText().toString())  && !TextUtils.isEmpty(new_mail.getText().toString()) && !TextUtils.isEmpty(new_pass.getText().toString())&& !TextUtils.isEmpty(conf_pass.getText().toString())){ // if all the text are full
                     if (Patterns.EMAIL_ADDRESS.matcher(emailtotext).matches()) { // if the email was written in a correct format
                         if (new_pass.getText().toString().equals(conf_pass.getText().toString())) { // if the passwords matches
                             Toast.makeText(RegisterUser.this, "User Registered Successfully", Toast.LENGTH_SHORT).show();

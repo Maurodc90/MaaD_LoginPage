@@ -18,7 +18,6 @@ public class admin_login extends AppCompatActivity {
 
 
         TextView restRew1 = findViewById(R.id.restRew1);
-        TextView restRew2 = findViewById(R.id.restRew2);
         ImageView rest1 = findViewById(R.id.rest1);
         Button btn_logOut = findViewById(R.id.btn_logOut);
 
