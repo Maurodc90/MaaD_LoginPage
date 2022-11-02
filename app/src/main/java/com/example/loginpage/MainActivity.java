@@ -8,42 +8,51 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity {
+
+    TextView username, password, forgetpass, registerUser;
+    Button loginBtn;
+    FirebaseAuth mAuth;
+
+
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        username = findViewById(R.id.username);
+        password = findViewById(R.id.password);
+        forgetpass = findViewById(R.id.forgetpass);
+        registerUser = findViewById(R.id.new_user);
+        loginBtn = findViewById(R.id.loginbtn);
+        mAuth = FirebaseAuth.getInstance();
 
-        TextView username = findViewById(R.id.username);
-        TextView password = findViewById(R.id.password);
-        TextView forgetpass = findViewById(R.id.forgetpass);
-        TextView registerUser = findViewById(R.id.new_user);
 
-        Button loginBtn = findViewById(R.id.loginbtn);
+
+
 
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String emailtotext = username.getText().toString();
-                if (Patterns.EMAIL_ADDRESS.matcher(emailtotext).matches()){
-                    if(username.getText().toString().equals("ad@min.com") && password.getText().toString().equals("admin")){
-                        Toast.makeText(MainActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(MainActivity.this, admin_login.class);
-                        startActivity(intent);
-                    } else if (username.getText().toString().equals("us@er.com") && password.getText().toString().equals("user")){
-                        Intent intent = new Intent(MainActivity.this, menuApp.class);
-                        startActivity(intent);
-                    }
-
-                    else {
-                        Toast.makeText(MainActivity.this, "Wrong Email/Password", Toast.LENGTH_SHORT).show();
-                    }
-                }
+                userLogin();
             }
+
+
         });
 
         registerUser.setOnClickListener(new View.OnClickListener() {
@@ -53,5 +62,54 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
     }
+    private void userLogin() {
+        String emailtotext = username.getText().toString().trim();
+        String passwordtotext = password.getText().toString().trim();
+        if (emailtotext.isEmpty()){
+            username.setError("Please provide an email address");
+            username.requestFocus();
+            return;
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(emailtotext).matches()){
+            username.setError("Please provide a correct email address");
+            username.requestFocus();
+            return;
+        }
+        if (passwordtotext.isEmpty()){
+            password.setError("Please insert your password");
+            password.requestFocus();
+            return;
+        }
+        if (password.length() < 6 ){
+            password.setError("The password need to be minimum 6 char");
+            password.requestFocus();
+            return;
+        }
+        mAuth.signInWithEmailAndPassword(emailtotext, passwordtotext).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    Toast.makeText(MainActivity.this, "Login correctly", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(MainActivity.this, menuApp.class);
+                    startActivity(intent);
+                } else{
+                    Toast.makeText(MainActivity.this, "Failed to login, please check your credential", Toast.LENGTH_LONG).show();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(MainActivity.this, "Failed to login, please check your credential", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+
+
+    }
+
+
 }
