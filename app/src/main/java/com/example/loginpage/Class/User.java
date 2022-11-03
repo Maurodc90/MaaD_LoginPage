@@ -1,4 +1,4 @@
-package com.example.loginpage;
+package com.example.loginpage.Class;
 
 public class User {
     private String fn, sn;

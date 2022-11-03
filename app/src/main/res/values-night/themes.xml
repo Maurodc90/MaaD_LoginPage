@@ -1,8 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.LoginPage" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.LoginPage" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
+        <item name="colorPrimary">@color/blue_sapphire</item>
+        <item name="colorPrimaryDark">@color/indigo_dye</item>
+        <item name="colorAccent">@color/red_salsa</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->

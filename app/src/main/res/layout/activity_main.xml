@@ -4,98 +4,77 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mainbck"
+    android:background="@color/magnolia"
     tools:context=".MainActivity">
 
-    <!-- Sign In Heading -->
+    <ImageView
+        android:id="@+id/app_logo"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/logo" />
+
     <TextView
-        android:text="Sign-in"
+        android:id="@+id/app_slogan"
+        android:layout_width="220dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="95dp"
+        android:layout_marginTop="180dp"
+        android:text="For Foodies By Foodies."
+        android:textAlignment="center"
+        android:textColor="@color/indigo_dye"
+        android:textSize="20sp"
+        android:textStyle="bold|italic"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/main_login_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:textSize="35dp"
-        android:layout_margin="50dp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:id="@+id/signin"
-        />
-
-    <!-- UserName -->
-
-    <!-- User Name -->
-    <EditText
-        android:id="@+id/username"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/signin"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="59dp"
-        android:layout_marginEnd="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
         android:layout_marginBottom="10dp"
-        android:background="#30ffffff"
-        android:drawableLeft="@drawable/ic_baseline_person_outline_24"
-        android:drawablePadding="30dp"
-        android:hint="Email address"
-        android:inputType="textEmailAddress"
-        android:padding="20dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/buttons"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:textColor="@color/magnolia"
+        android:text="Already have an account? Login"
+        android:padding="20dp"/>
 
-    <EditText
-        android:id="@+id/password"
+    <ImageView
+        android:id="@+id/main_image"
+        android:layout_width="350dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="250dp"
+        android:layout_above="@+id/main_join_btn"
+        android:src="@drawable/foodimage"
+        android:layout_marginBottom="30dp">
+
+    </ImageView>
+
+
+    <Button
+        android:id="@+id/main_join_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/username"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="#30ffffff"
-        android:drawableLeft="@drawable/ic_baseline_key_24"
-        android:drawablePadding="30dp"
-        android:hint="Password"
-        android:inputType="textPassword"
+        android:layout_above="@+id/main_login_btn"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/button1"
         android:padding="20dp"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white" />
+        android:text="New here? Signup"
+        android:textAllCaps="false"
+        android:textColor="@color/magnolia"
+        android:textSize="18sp" />
 
 
-    <!-- Login Button -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/loginbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/password"
-        android:layout_marginTop="13dp"
-        android:text="Login"
-        app:backgroundTint="#D4A10C"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
-        />
 
-    <!-- Forget Password -->
-    <TextView
-        android:id="@+id/forgetpass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/loginbtn"
-        android:text="Forgot Password?"
-        android:textColor="@color/white"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
-        />
 
-    <!-- New User -->
-    <TextView
-        android:id="@+id/new_user"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/forgetpass"
-        android:text="New User?"
-        android:textColor="@color/white"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"
-        />
 
 
 </RelativeLayout>

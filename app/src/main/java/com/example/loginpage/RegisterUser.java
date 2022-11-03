@@ -1,5 +1,6 @@
 package com.example.loginpage;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.loginpage.Class.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -25,25 +27,30 @@ public class RegisterUser extends AppCompatActivity {
     // 1.  Create a firebase auth object
     FirebaseAuth mAuth;
 
+    TextView new_username, new_surname, new_mail, new_pass, conf_pass, alreadyAccount;
+    Button registerUser;
 
 
 
 
 
 
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_user);
 
 
-        TextView new_username = findViewById(R.id.inputName);
-        TextView new_surname = findViewById(R.id.inputSurname);
-        TextView new_mail = findViewById(R.id.inputEmail);
-        TextView new_pass = findViewById(R.id.inputPassword);
-        TextView conf_pass = findViewById(R.id.inputConfirmPassword);
-        Button registerUser = findViewById(R.id.btnRegister);
-        TextView alreadyAccount = findViewById(R.id.alredyAccount);
+        new_username = findViewById(R.id.inputName);
+        new_surname = findViewById(R.id.inputSurname);
+        new_mail = findViewById(R.id.inputEmail);
+        new_pass = findViewById(R.id.inputPassword);
+        conf_pass = findViewById(R.id.inputConfirmPassword);
+        alreadyAccount = findViewById(R.id.alredyAccount);
+        registerUser = findViewById(R.id.register_btn);
+
 
         mAuth = FirebaseAuth.getInstance(); // get the instance of firebase (the id?)
 
@@ -73,7 +80,7 @@ public class RegisterUser extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if(task.isSuccessful()){
                                                 Toast.makeText(RegisterUser.this, "User Registered Successfully", Toast.LENGTH_LONG).show();
-                                                Intent intent = new Intent(RegisterUser.this, MainActivity.class);
+                                                Intent intent = new Intent(RegisterUser.this, Login.class);
                                                 startActivity(intent);
                                             } else {
                                                 Toast.makeText(RegisterUser.this, "Failed to complete", Toast.LENGTH_LONG).show();
@@ -105,7 +112,7 @@ public class RegisterUser extends AppCompatActivity {
         alreadyAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(RegisterUser.this, MainActivity.class);
+                Intent intent = new Intent(RegisterUser.this, Login.class);
                 startActivity(intent);
             }
         });
