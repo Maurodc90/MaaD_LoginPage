@@ -1,6 +1,5 @@
 package com.example.loginpage;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.loginpage.Class.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -29,6 +29,7 @@ public class RegisterUser extends AppCompatActivity {
 
     TextView new_username, new_surname, new_mail, new_pass, conf_pass, alreadyAccount;
     Button registerUser;
+    LottieAnimationView progressBar;
 
 
 
@@ -36,7 +37,7 @@ public class RegisterUser extends AppCompatActivity {
 
 
 
-    @SuppressLint("MissingInflatedId")
+    // @SuppressLint("MissingInflatedId") // not sure how much this line is usefule to something
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +51,7 @@ public class RegisterUser extends AppCompatActivity {
         conf_pass = findViewById(R.id.inputConfirmPassword);
         alreadyAccount = findViewById(R.id.alredyAccount);
         registerUser = findViewById(R.id.register_btn);
+        progressBar = findViewById(R.id.animationView);
 
 
         mAuth = FirebaseAuth.getInstance(); // get the instance of firebase (the id?)
@@ -65,6 +67,7 @@ public class RegisterUser extends AppCompatActivity {
                     if (Patterns.EMAIL_ADDRESS.matcher(emailtotext).matches()) { // if the email was written in a correct format
                         if (new_pass.getText().toString().equals(conf_pass.getText().toString())) { // if the passwords matches
 
+                            progressBar.setVisibility(View.VISIBLE);
                             mAuth.createUserWithEmailAndPassword(new_mail.getText().toString(),new_pass.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() { // from Firebase create and user with
                                 @Override
                                 public void onSuccess(AuthResult authResult) {
@@ -80,9 +83,11 @@ public class RegisterUser extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if(task.isSuccessful()){
                                                 Toast.makeText(RegisterUser.this, "User Registered Successfully", Toast.LENGTH_LONG).show();
+                                                progressBar.setVisibility(View.GONE);
                                                 Intent intent = new Intent(RegisterUser.this, Login.class);
                                                 startActivity(intent);
                                             } else {
+                                                progressBar.setVisibility(View.GONE);
                                                 Toast.makeText(RegisterUser.this, "Failed to complete", Toast.LENGTH_LONG).show();
                                             }
                                         }

@@ -8,12 +8,16 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
+
     Button login, signup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        login = findViewById(R.id.main_login_btn);
+        signup = findViewById(R.id.main_join_btn);
 
 
 

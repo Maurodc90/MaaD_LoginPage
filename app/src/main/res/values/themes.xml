@@ -16,11 +16,14 @@
 
         <!-- Customize your theme here. -->
     </style>
+
     <style name="Theme.LoginPage.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
     <style name="Theme.LoginPage.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
     <style name="Theme.LoginPage.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 

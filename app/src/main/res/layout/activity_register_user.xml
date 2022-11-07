@@ -45,13 +45,13 @@
         android:layout_marginTop="50dp"
         android:layout_marginRight="50dp"
         android:background="@drawable/inputreg"
-        android:hint="Email"
-        android:inputType="textEmailAddress"
-        android:padding="20dp"
         android:textColor="@color/magnolia"
         android:textColorHint="@color/magnolia"
         android:textSize="17sp"
         android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="20dp"
         android:drawablePadding="30dp"
         />
 
@@ -147,9 +147,9 @@
 
     <Button
         android:id="@+id/register_btn"
+        android:layout_below="@+id/inputConfirmPassword"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/inputConfirmPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@drawable/button2"
@@ -179,6 +179,19 @@
         android:textStyle="bold|italic" />
 
 
+<!--    Animation Lottie -->
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/loadinganimation"
+        app:lottie_url="loadinganimation.json" />
 
 
 </RelativeLayout>

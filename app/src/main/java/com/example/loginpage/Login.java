@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
@@ -22,6 +23,7 @@ public class Login extends AppCompatActivity {
     TextView login_email, login_password;
     Button loginBtn;
     FirebaseAuth mAuth;
+    LottieAnimationView progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class Login extends AppCompatActivity {
         login_email = findViewById(R.id.login_email_input);
         login_password = findViewById(R.id.login_password_input);
         loginBtn = findViewById(R.id.login_btn);
+        progressBar = findViewById(R.id.animationView);
 
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -56,15 +59,18 @@ public class Login extends AppCompatActivity {
             login_password.requestFocus();
             return;
         }
-
+        progressBar.setVisibility(View.VISIBLE);
+        progressBar.bringToFront();
         mAuth.signInWithEmailAndPassword(emailtotext, passwordtotext).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(Login.this, "Login correctly", Toast.LENGTH_LONG).show();
-                    Intent intent = new Intent(Login.this, RegisterUser.class);
+                    progressBar.setVisibility(View.GONE);
+                    Intent intent = new Intent(Login.this, Profile.class);
                     startActivity(intent);
                 } else{
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(Login.this, "Failed to login, please check your credential", Toast.LENGTH_LONG).show();
                 }
             }

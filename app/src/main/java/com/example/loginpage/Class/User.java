@@ -1,8 +1,15 @@
 package com.example.loginpage.Class;
 
 public class User {
-    private String fn, sn;
+    private String fn, sn, url;
     private boolean isCritique;
+
+    public User(String fn, String sn, String url, boolean isCritique) {
+        this.fn = fn;
+        this.sn = sn;
+        this.url = url;
+        this.isCritique = isCritique;
+    }
 
     public User(String fn, String sn, boolean isCritique) {
         this.fn = fn;
@@ -38,5 +45,9 @@ public class User {
     public void setCritique(boolean critique) {
         isCritique = critique;
     }
+
+    public String getUrl() { return url; }
+
+    public void setUrl(String url) { this.url = url; }
 
 }
