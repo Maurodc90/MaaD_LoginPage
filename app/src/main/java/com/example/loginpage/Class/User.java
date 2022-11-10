@@ -2,7 +2,22 @@ package com.example.loginpage.Class;
 
 public class User {
     private String fn, sn, url;
-    private boolean isCritique;
+    private boolean isCritique, isAdmin;
+
+    public User(String fn, String sn, String url, boolean isCritique, boolean isAdmin) {
+        this.fn = fn;
+        this.sn = sn;
+        this.url = url;
+        this.isCritique = isCritique;
+        this.isAdmin = isAdmin;
+    }
+
+    public User(String fn, String sn, boolean isCritique, boolean isAdmin) {
+        this.fn = fn;
+        this.sn = sn;
+        this.isCritique = isCritique;
+        this.isAdmin = isAdmin;
+    }
 
     public User(String fn, String sn, String url, boolean isCritique) {
         this.fn = fn;
@@ -20,8 +35,13 @@ public class User {
     public User() {
     }
 
+    public boolean isAdmin() {
+        return isAdmin;
+    }
 
-
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
 
     public String getFn() {
         return fn;

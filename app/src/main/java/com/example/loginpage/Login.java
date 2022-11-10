@@ -67,7 +67,7 @@ public class Login extends AppCompatActivity {
                 if(task.isSuccessful()){
                     Toast.makeText(Login.this, "Login correctly", Toast.LENGTH_LONG).show();
                     progressBar.setVisibility(View.GONE);
-                    Intent intent = new Intent(Login.this, Profile.class);
+                    Intent intent = new Intent(Login.this, Dashboard.class);
                     startActivity(intent);
                 } else{
                     progressBar.setVisibility(View.GONE);

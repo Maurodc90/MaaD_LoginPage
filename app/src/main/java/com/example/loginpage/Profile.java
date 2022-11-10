@@ -35,7 +35,7 @@ public class Profile extends AppCompatActivity {
 
     TextView profile_name, profile_surname, profile_greetings;
     ImageView profile_picture;
-    Button logoutBtn, editDetailsBtn;
+    Button logoutBtn, editDetailsBtn, toMenuBtn;
     Uri path;
 
 
@@ -45,12 +45,13 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
 
-        logoutBtn = findViewById(R.id.profile_logoutButton);
+        logoutBtn = findViewById(R.id.profile_logOutBtn);
         editDetailsBtn = findViewById(R.id.profile_edit_detailsBtn);
         profile_name = findViewById(R.id.profile_name_display);
         profile_surname = findViewById(R.id.profile_surname_display);
         profile_greetings = findViewById(R.id.profile_greetings);
         profile_picture = findViewById(R.id.profile_user_picture);
+        toMenuBtn = findViewById(R.id.profile_toMainPageBtn);
 
 
 
@@ -61,6 +62,14 @@ public class Profile extends AppCompatActivity {
                 Toast.makeText(Profile.this, "Good Bye", Toast.LENGTH_SHORT).show();
                 Intent logout_intent = new Intent(Profile.this, Login.class);
                 startActivity(logout_intent);
+            }
+        });
+
+        toMenuBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent toMenu_intent = new Intent(Profile.this, Dashboard.class);
+                startActivity(toMenu_intent);
             }
         });
 
@@ -88,10 +97,12 @@ public class Profile extends AppCompatActivity {
                     String name = userProfile.getFn();
                     String surname = userProfile.getSn();
 
-                    if (userProfile.isCritique() == false){
-                        profile_greetings.setText("Welcome " + name + "!");
+                    if (userProfile.isCritique()){
+                        profile_greetings.setText("Welcome " + name + "You are a food Critique!");
+                    } else if (userProfile.isAdmin()) {
+                        profile_greetings.setText("Welcome " + name + ", you are an Admin!");
                     } else {
-                        profile_greetings.setText("Welcome " + name + ", you are a food critique!");
+                        profile_greetings.setText("Welcome " + name + "!");
                     }
                     profile_name.setText(name);
                     profile_surname.setText(surname);

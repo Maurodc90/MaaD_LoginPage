@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bkreg"
+    tools:context=".RegisterUser">
+
+    <!--    Logo -->
+
+    <ImageView
+        android:id="@+id/app_logo1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/logo" />
+    <!-- Text FFBF -->
+
+
+    <!--    Email Address -->
+
+    <TextView
+        android:id="@+id/app_slogan1"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_below="@+id/app_logo1"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="8dp"
+        android:text="Insert Details of new food Critique."
+        android:textAlignment="center"
+        android:textColor="@color/magnolia"
+        android:textSize="20sp"
+        android:textStyle="bold|italic" />
+
+    <EditText
+        android:id="@+id/inputEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/app_slogan1"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/inputreg"
+        android:textColor="@color/magnolia"
+        android:textColorHint="@color/magnolia"
+        android:textSize="17sp"
+        android:drawableLeft="@drawable/ic_baseline_email_24"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:padding="20dp"
+        android:drawablePadding="30dp"
+        />
+
+
+    <!--    First Name -->
+
+
+    <EditText
+        android:id="@+id/inputName"
+        android:layout_width= "match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/inputreg"
+        android:layout_below="@+id/inputEmail"
+        android:padding="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="5dp"
+        android:hint="First Name"
+        android:textColorHint="@color/magnolia"
+        android:textColor="@color/magnolia"
+        android:inputType="text"
+        android:textSize="17sp"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:drawablePadding="30dp"
+        />
+
+    <!--    Surname -->
+
+
+    <EditText
+        android:id="@+id/inputSurname"
+        android:layout_width= "match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/inputreg"
+        android:padding="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_below="@+id/inputName"
+        android:layout_marginTop="5dp"
+        android:hint="Surname"
+        android:textColorHint="@color/magnolia"
+        android:textColor="@color/magnolia"
+        android:inputType="text"
+        android:textSize="17sp"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:drawablePadding="30dp"
+        />
+
+    <!--    Password -->
+    <EditText
+        android:id="@+id/inputPassword"
+        android:layout_width= "match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/inputreg"
+        android:padding="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_below="@+id/inputSurname"
+        android:layout_marginTop="5dp"
+        android:hint="Password"
+        android:textColorHint="@color/magnolia"
+        android:textColor="@color/magnolia"
+        android:inputType="textPassword"
+        android:textSize="17sp"
+        android:drawableLeft="@drawable/ic_baseline_key_24"
+        android:drawablePadding="30dp"
+        />
+
+    <!--    Confirm Password -->
+
+
+    <EditText
+        android:id="@+id/inputConfirmPassword"
+        android:layout_width= "match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/inputreg"
+        android:padding="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_below="@+id/inputPassword"
+        android:layout_marginTop="5dp"
+        android:hint="Confirm Password"
+        android:textColorHint="@color/magnolia"
+        android:textColor="@color/magnolia"
+        android:inputType="textPassword"
+        android:textSize="17sp"
+        android:drawableLeft="@drawable/ic_baseline_key_24"
+        android:drawablePadding="30dp"
+        />
+
+    <!--    Button -->
+
+
+    <Button
+        android:id="@+id/register_btn"
+        android:layout_below="@+id/inputConfirmPassword"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button2"
+        android:padding="10dp"
+        android:text="Register Critique"
+        android:textAllCaps="false"
+        android:textColor="@color/blue_sapphire"
+        android:textSize="18sp"
+        />
+
+
+    <!--    Already an account -->
+
+    <TextView
+        android:id="@+id/alredyAccount"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/register_btn"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="95dp"
+        android:text="Go Back?"
+        android:textAlignment="center"
+        android:textColor="@color/magnolia"
+        android:textSize="15sp"
+        android:textStyle="bold|italic" />
+
+
+    <!--    Animation Lottie -->
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:visibility="gone"
+        app:lottie_rawRes="@raw/loadinganimation"
+        app:lottie_url="loadinganimation.json" />
+
+
+</RelativeLayout>
